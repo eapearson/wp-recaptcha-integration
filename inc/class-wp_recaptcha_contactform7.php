@@ -68,10 +68,12 @@ class WP_reCaptcha_ContactForm7 {
 		$recaptcha_html = WP_reCaptcha::instance()->recaptcha_html( $atts );
 		$validation_error = wpcf7_get_validation_error( $tag->name );
 
-		$html = sprintf(
-			apply_filters( 'wp_recaptcha_cf7_shortcode_wrap' ,'<span class="wpcf7-form-control-wrap %1$s">%2$s %3$s</span>' ),
-			$tag->name, $recaptcha_html, $validation_error );
-	
+		if (has_filter('wp_recaptcha_cf7_shortcode_wrap')) {
+			$html = sprintf(apply_filters('wp_recaptcha_cf7_shortcode_wrap' ,'%1$s %2$s' , $tag->name), $recaptcha_html, $validation_error );
+		} else {
+			$html = sprintf('<span class="wpcf7-form-control-wrap %1$s">%2$s %3$s</span>', $tag->name, $recaptcha_html, $validation_error );
+		}
+
 		return $html;
 	}
 
@@ -80,7 +82,7 @@ class WP_reCaptcha_ContactForm7 {
 			wp_enqueue_script('wpcf7-recaptcha-integration',plugins_url('/js/wpcf7.js',dirname(__FILE__)),array('contact-form-7'));
 		}
 	}
-
+ 
 
 
 	function add_tag_generator_recaptcha() {
@@ -91,7 +93,7 @@ class WP_reCaptcha_ContactForm7 {
 	}
 
 
-
+ 
 	function recaptcha_settings_callback( $contact_form ) {
 		$type = 'recaptcha';
 	
