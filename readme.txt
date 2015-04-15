@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: security, captcha, recaptcha, no captcha, login, signup, contact form 7, ninja forms, woocommerce
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.1.3
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -241,6 +241,14 @@ I will migrate all the translation stuff there.
 
 
 == Changelog ==
+
+= 1.1.5 =
+- Fix: Remove automatic key testing in Backend.
+
+= 1.1.4 =
+- Comments: get back to `comment_form_defaults` filter (was introduced in 1.1.3)
+- Fix: Get key option
+- Fix: Key testing return value
 
 = 1.1.3 =
 - Comments: use filter `comment_form_submit_button` in WP >= 4.2
